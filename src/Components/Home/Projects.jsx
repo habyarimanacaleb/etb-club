@@ -1,5 +1,6 @@
 import React from "react";
 import { Trash2, Drone, Home, Code2, Cog, Users } from "lucide-react";
+import toast, { Toaster } from "react-hot-toast";
 
 const Icons = [
   <Home className="w-6 h-6 text-blue-600" />,
@@ -22,11 +23,12 @@ const Projects = () => {
       const response = await fetch(`${ApiUrl}/api/projects`);
       const data = await response.json();
       setProjectData(data);
+      toast.success("Projects loaded successfully!");
       setLoading(false);
-      console.log("Fetched projects:", data);
     } catch (err) {
       console.error("Error fetching projects:", err);
       setError(err);
+      toast.error("Failed to load projects. Please try again later.");
       setLoading(false);
     }
   };
@@ -86,6 +88,8 @@ const Projects = () => {
 
   // ✅ Projects Display
   return (
+    <>
+    <Toaster position="top-right" reverseOrder={false} />
     <section id="projects" className="py-12 px-6 md:px-16">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-500 via-gray-200 to-green-500 bg-clip-text text-transparent">
@@ -135,6 +139,7 @@ const Projects = () => {
         ))}
       </div>
     </section>
+    </>
   );
 };
 

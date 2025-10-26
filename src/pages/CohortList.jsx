@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams,Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import Join from "../Components/Join";
+import toast, { Toaster } from "react-hot-toast";
 
 const JoinCohort = () => {
   const { id } = useParams();
   const [cohort, setCohort] = useState(null);
   const [loading, setLoading] = useState(true);
   const [joining, setJoining] = useState(false);
-  const [message, setMessage] = useState("");
   const token = localStorage.getItem("token");
   const currentUserId = localStorage.getItem("userId"); // save user id when login
   const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -23,7 +23,7 @@ const JoinCohort = () => {
         setCohort(res.data.cohort || null);
       } catch (err) {
         console.error(err);
-        setMessage("Error fetching cohort details");
+        toast.error("Failed to load cohort details");
       } finally {
         setLoading(false);
       }
@@ -35,7 +35,7 @@ const JoinCohort = () => {
   const handleJoin = async () => {
     if (!cohort) return;
     if (cohort.students.some((s) => s._id === currentUserId)) {
-      setMessage("You are already enrolled in this cohort");
+      toast.error("You have already joined this cohort");
       return;
     }
 
@@ -47,7 +47,7 @@ const JoinCohort = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      setMessage(res.data.message);
+      toast.success(res.data.message || "Successfully joined the cohort!");
       // Refresh cohort details
       const updated = await axios.get(`${apiUrl}/api/cohort-inform/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -55,11 +55,11 @@ const JoinCohort = () => {
       setCohort(updated.data.cohort);
 
       setTimeout(() => {
-        setMessage("");
+        toast.dismiss();
       }, 2000);
     } catch (err) {
       console.error(err);
-      setMessage(err.response?.data?.message || "Failed to join cohort");
+      toast.error(err.response?.data?.message || "Failed to join cohort");
     } finally {
       setJoining(false);
     }
@@ -81,9 +81,10 @@ const JoinCohort = () => {
     );
 
   return (
+    <>
+    <Toaster position="top-right" reverseOrder={false} />
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 gap-6 px-6 py-12 justify-items-center bg-gradient-to-r from-purple-600 to-pink-500">
       {/* Header */}
-      
 
       {/* Form */}
       <div className="bg-white rounded-3xl shadow-xl p-8 w-full max-w-3xl">
@@ -148,6 +149,7 @@ const JoinCohort = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 
