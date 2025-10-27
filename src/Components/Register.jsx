@@ -123,7 +123,7 @@ const Register = () => {
                   value={form.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                 />
                 <input
                   type="email"
@@ -132,7 +132,7 @@ const Register = () => {
                   value={form.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                 />
                 <input
                   type="password"
@@ -141,12 +141,12 @@ const Register = () => {
                   value={form.password}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                 />
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-pink-600 text-white py-2 rounded-lg font-semibold hover:bg-pink-700 transition"
+                  className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
                 >
                   {loading ? "Sending OTP..." : "Register"}
                 </button>
@@ -160,12 +160,12 @@ const Register = () => {
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
                   required
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-pink-500"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                 />
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-pink-600 text-white py-2 rounded-lg font-semibold hover:bg-pink-700 transition"
+                  className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
                 >
                   {loading ? "Verifying..." : "Verify OTP"}
                 </button>
@@ -187,7 +187,7 @@ const Register = () => {
               Already have an account?{" "}
               <Link
                 to="/login"
-                className="text-pink-600 font-semibold hover:underline"
+                className="text-blue-600 font-semibold hover:underline"
               >
                 Login
               </Link>
