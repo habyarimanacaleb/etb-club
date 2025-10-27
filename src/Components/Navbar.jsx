@@ -16,7 +16,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-md px-4 py-2">
+    <>
+    <nav className="bg-white shadow-md px-4 py-2 border-b border-gray-200 fixed w-full z-10">
       <div className="container mx-auto px-0 lg:px-4 py-3 flex items-center justify-between">
         <div className='flex items-center hover:scale-105 transition-all hover:rotate-1'>
         <NavLink to="/" className="text-2xl font-bold text-blue-600">
@@ -84,6 +85,8 @@ const Navbar = () => {
         </ul>
       )}
     </nav>
+    <div className='pb-16'></div>
+    </>
   );
 };
 

@@ -6,19 +6,19 @@ const Features = () => {
 
      const features = [
     {
-      icon: <GraduationCap size={36} className="text-gray-500 hover:text-white transition-all ease-in-out" />,
+      icon: <GraduationCap size={36} className="text-gray-500 hover:text-white transition duration-300 ease-in-out" />,
       bg: "bg-white hover:bg-green-500",
       title: "Learn",
       desc: "Master cutting-edge technologies and industry-standard tools",
     },
     {
-      icon: <Wrench size={36} className="text-gray-500 hover:text-white transition-all ease-in-out" />,
+      icon: <Wrench size={36} className="text-gray-500 hover:text-white transition duration-300 ease-in-out" />,
       bg: "bg-white hover:bg-amber-800",
       title: "Build",
       desc: "Create real-world projects and prototypes that matter",
     },
     {
-      icon: <Lightbulb size={36} className="text-gray-500 hover:text-white transition-all ease-in-out" />,
+      icon: <Lightbulb size={36} className="text-gray-500 hover:text-white transition duration-300 ease-in-out" />,
       bg: "bg-white hover:bg-green-500",
       title: "Innovate",
       desc: "Push boundaries and solve tomorrow's challenges",

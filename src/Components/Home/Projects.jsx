@@ -23,7 +23,6 @@ const Projects = () => {
       const response = await fetch(`${ApiUrl}/api/projects`);
       const data = await response.json();
       setProjectData(data);
-      toast.success("Projects loaded successfully!");
       setLoading(false);
     } catch (err) {
       console.error("Error fetching projects:", err);
@@ -58,7 +57,6 @@ const Projects = () => {
     );
   }
 
-  // ❌ Error State
   if (error) {
     return (
       <section id="projects" className="py-12 px-6 md:px-16 text-center">
@@ -72,7 +70,6 @@ const Projects = () => {
     );
   }
 
-  // ⚠️ No Projects
   if (projectData.length === 0) {
     return (
       <section id="projects" className="py-12 px-6 md:px-16 text-center">

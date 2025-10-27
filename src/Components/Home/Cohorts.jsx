@@ -63,29 +63,31 @@ const Cohorts = () => {
     {cohorts.map((cohort, index) => (
       <li
         key={cohort._id}
-        className="p-6 border rounded-lg shadow hover:shadow-xl transition bg-white flex flex-col justify-between"
+        className="border rounded-lg shadow hover:shadow-xl transition bg-white flex flex-col justify-between hover:scale-105 mx-4 md:mx-0 mb-2"
       >
         <div>
-          <div className="w-full text-6xl font-bold text-gray-300 animate-pulse h-40 mb-4 overflow-hidden rounded-lg bg-gray-200 flex items-center justify-center">
+          <div className="w-full text-6xl font-bold text-gray-300 animate-pulse h-52 mt-2 mb-4 overflow-hidden bg-gray-200 flex items-center justify-center">
             00{index + 1}
           </div>
-          <h2 className="font-bold text-4xl text-blue-500">{cohort.name}</h2>
-          <p className="text-gray-600 text-2xl">{cohort.program}</p>
-          <p className="text-gray-500 text-sm">
+          <div className="p-6">
+          <h2 className="font-bold text-2xl text-blue-500">{cohort.name}</h2>
+          <p className="text-gray-600 text-lg font-semibold mb-4">{cohort.program}</p>
+          <p className="text-gray-500 text-sm italic">
             {new Date(cohort.startDate).toLocaleDateString()} -{" "}
             {new Date(cohort.endDate).toLocaleDateString()}
           </p>
-        </div>
-
         <button
           onClick={(e) => {
             e.stopPropagation(); // Prevent li click
             navigate(`/cohorts/${cohort._id}`);
           }}
-          className="mt-6 w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-xl font-semibold transition"
+          className="mt-6 w-full bg-blue-500 hover:bg-blue-700 cursor-pointer text-white py-3 rounded-xl font-semibold transition"
         >
           Enroll Now
         </button>
+          </div>
+        </div>
+
       </li>
     ))}
   </ul>
